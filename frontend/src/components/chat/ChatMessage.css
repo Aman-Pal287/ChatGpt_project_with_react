@@ -1,0 +1,28 @@
+.message {
+  max-width: 80%;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: var(--chat-user-bg);
+}
+
+.ai-message {
+  align-self: flex-start;
+  background-color: var(--chat-ai-bg);
+}
+
+.message-timestamp {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .message {
+    max-width: 90%;
+  }
+}
