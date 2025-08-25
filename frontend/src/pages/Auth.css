@@ -1,0 +1,123 @@
+:root {
+  /* Light theme variables */
+  --light-bg: #f5f5f5;
+  --light-form-bg: #ffffff;
+  --light-text: #333333;
+  --light-label: #555555;
+  --light-input-border: #dddddd;
+  --light-input-bg: #ffffff;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  --light-button-bg: #007bff;
+  --light-button-hover: #0056b3;
+  --light-error: #dc3545;
+  --light-link: #007bff;
+
+  /* Dark theme variables */
+  --dark-bg: #1a1a1a;
+  --dark-form-bg: #2d2d2d;
+  --dark-text: #ffffff;
+  --dark-label: #cccccc;
+  --dark-input-border: #404040;
+  --dark-input-bg: #3d3d3d;
+  --dark-shadow: rgba(0, 0, 0, 0.3);
+  --dark-button-bg: #0d6efd;
+  --dark-button-hover: #0b5ed7;
+  --dark-error: #ff4444;
+  --dark-link: #5799ff;
+
+  /* Set default theme to dark */
+  --bg-color: var(--dark-bg);
+  --form-bg: var(--dark-form-bg);
+  --text-color: var(--dark-text);
+  --label-color: var(--dark-label);
+  --input-border: var(--dark-input-border);
+  --input-bg: var(--dark-input-bg);
+  --shadow: var(--dark-shadow);
+  --button-bg: var(--dark-button-bg);
+  --button-hover: var(--dark-button-hover);
+  --error-color: var(--dark-error);
+  --link-color: var(--dark-link);
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  transition: all 0.3s ease;
+}
+
+.auth-form {
+  background-color: var(--form-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--shadow);
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.3s ease;
+  font-family: monospace;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--label-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--button-hover);
+}
+
+.auth-link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
