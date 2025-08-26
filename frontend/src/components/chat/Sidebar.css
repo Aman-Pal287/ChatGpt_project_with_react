@@ -47,6 +47,12 @@
   border-left-color: rgba(255, 255, 255, 0.06);
 }
 
+.chat-item.active {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  border-left-color: #ffffff;
+}
+
 /* New chat button - subtle monochrome */
 .new-chat-btn {
   display: inline-block;

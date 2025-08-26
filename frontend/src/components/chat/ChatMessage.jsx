@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import "./ChatMessage.css";
 
 const ChatMessage = ({ message }) => {
+ 
+
   return (
     <div
       className={`message ${

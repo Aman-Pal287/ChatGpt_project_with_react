@@ -7,7 +7,13 @@ const messageModel = require("../models/message.model");
 const { createMemory, queryMemory } = require("../services/vector.service");
 
 function initSocketServer(httpServer) {
-  const io = new Server(httpServer, {});
+  const io = new Server(httpServer, {
+    cors: {
+      origin: "http://localhost:5173",
+      allowedHeaders: ["Authorization", "Content-Type"],
+      credentials: true,
+    },
+  });
 
   /* Socket.io middleware*/
   io.use(async (socket, next) => {
@@ -33,6 +39,8 @@ function initSocketServer(httpServer) {
   });
 
   io.on("connection", (socket) => {
+    console.log("user connected");
+
     // console.log(socket);
     // console.log("New socket connection: ", socket.id);
 

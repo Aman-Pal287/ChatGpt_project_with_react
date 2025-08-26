@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./Sidebar.css";
 
-const Sidebar = ({ isOpen, previousChats = [], onCreate }) => {
+const Sidebar = ({
+  isOpen,
+  previousChats = [],
+  onCreate,
+  activeChat,
+  onChatSelect,
+}) => {
   const [chats, setChats] = useState(previousChats);
 
   useEffect(() => {
@@ -28,7 +34,13 @@ const Sidebar = ({ isOpen, previousChats = [], onCreate }) => {
 
       <div className="previous-chats">
         {chats.map((chat, index) => (
-          <div key={index} className="chat-item">
+          <div
+            key={chat._id}
+            className={`chat-item ${
+              activeChat?._id === chat._id ? "active" : ""
+            }`}
+            onClick={() => onChatSelect && onChatSelect(chat)}
+          >
             {chat.title}
           </div>
         ))}
@@ -42,9 +54,15 @@ Sidebar.propTypes = {
   previousChats: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
+      _id: PropTypes.string,
     })
   ),
   onCreate: PropTypes.func,
+  activeChat: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  onChatSelect: PropTypes.func,
 };
 
 export default Sidebar;
