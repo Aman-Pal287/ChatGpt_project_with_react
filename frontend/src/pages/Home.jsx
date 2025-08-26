@@ -35,6 +35,14 @@ const Home = () => {
     }
   };
 
+  const handleCreateChat = (newChat, updatedChats) => {
+    // prepend the new chat into parent state and clear messages
+    setPreviousChats(updatedChats);
+    setMessages([]);
+    // ensure sidebar remains open so user sees the new chat
+    setIsSidebarOpen(true);
+  };
+
   return (
     <div className="home-container">
       <button
@@ -44,7 +52,11 @@ const Home = () => {
         ☰
       </button>
 
-      <Sidebar isOpen={isSidebarOpen} previousChats={previousChats} />
+      <Sidebar
+        isOpen={isSidebarOpen}
+        previousChats={previousChats}
+        onCreate={handleCreateChat}
+      />
 
       <ChatArea messages={messages} onSendMessage={handleSendMessage} />
     </div>
