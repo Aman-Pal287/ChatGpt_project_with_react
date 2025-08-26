@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import "../theme.css";
 import "./Home.css";
 import Sidebar from "../components/chat/Sidebar";
 import ChatArea from "../components/chat/ChatArea";
-import { addChat, addMessage, clearMessages, setChats } from '../redux/features/chatSlice';
+import {
+  addChat,
+  addMessage,
+  clearMessages,
+  setChats,
+} from "../redux/features/chatSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -50,7 +55,7 @@ const Home = () => {
     // Add new chat to state
     dispatch(addChat(newChat));
     dispatch(clearMessages());
-    
+
     // ensure sidebar remains open so user sees the new chat
     setIsSidebarOpen(true);
   };
