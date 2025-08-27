@@ -150,7 +150,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <button
-        className="sidebar-toggle"
+        className={`sidebar-toggle ${isSidebarOpen ? "open" : ""}`}
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
         {isSidebarOpen ? "✕" : "☰"}
