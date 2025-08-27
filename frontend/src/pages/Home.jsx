@@ -4,6 +4,7 @@ import "../theme.css";
 import "./Home.css";
 import Sidebar from "../components/chat/Sidebar";
 import ChatArea from "../components/chat/ChatArea";
+
 import {
   addChat,
   addMessage,
@@ -24,7 +25,7 @@ const Home = () => {
     currentChat,
   } = useSelector((state) => state.chat);
 
-  console.log(messages);
+
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [socket, setsocket] = useState(null);
@@ -37,18 +38,16 @@ const Home = () => {
       const response = await axios.get(`/api/chat/message/${chat._id}`, {
         withCredentials: true,
       });
+  
 
-
-
-      
       const messages = response.data.chats.map((msg) => ({
         content: msg.content,
-        sender: msg.sender,
+        sender: msg.role,
         timestamp: msg.createdAt,
       }));
-      console.log(messages);
+      
 
-      // dispatch(setMessages(messages));
+      dispatch(setMessages(messages));
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
