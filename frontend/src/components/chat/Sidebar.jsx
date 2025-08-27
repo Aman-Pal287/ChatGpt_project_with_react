@@ -28,7 +28,7 @@ const Sidebar = ({
       <h2>Previous Chats</h2>
       <div className="sidebar-header">
         <button className="new-chat-btn" onClick={handleNewChat}>
-          + New chat
+          New chat
         </button>
       </div>
 

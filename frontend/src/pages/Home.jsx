@@ -25,8 +25,6 @@ const Home = () => {
     currentChat,
   } = useSelector((state) => state.chat);
 
-
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [socket, setsocket] = useState(null);
 
@@ -38,14 +36,12 @@ const Home = () => {
       const response = await axios.get(`/api/chat/message/${chat._id}`, {
         withCredentials: true,
       });
-  
 
       const messages = response.data.chats.map((msg) => ({
         content: msg.content,
         sender: msg.role,
         timestamp: msg.createdAt,
       }));
-      
 
       dispatch(setMessages(messages));
     } catch (error) {
@@ -128,7 +124,7 @@ const Home = () => {
         className="sidebar-toggle"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        ☰
+        {isSidebarOpen ? "✕" : "☰"}
       </button>
 
       <Sidebar
