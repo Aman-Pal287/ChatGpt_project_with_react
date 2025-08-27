@@ -21,6 +21,31 @@
   gap: 1rem;
 }
 
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #888;
+}
+
+.welcome-screen .logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #11a37f, #2ab691);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.welcome-screen p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
 .no-messages {
   display: flex;
   align-items: center;

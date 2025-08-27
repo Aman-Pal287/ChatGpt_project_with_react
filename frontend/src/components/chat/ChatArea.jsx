@@ -4,7 +4,7 @@ import ChatMessage from "./ChatMessage";
 import MessageInput from "./MessageInput";
 import "./ChatArea.css";
 
-const ChatArea = ({ messages, onSendMessage }) => {
+const ChatArea = ({ messages, onSendMessage, currentChat }) => {
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
@@ -17,7 +17,12 @@ const ChatArea = ({ messages, onSendMessage }) => {
   return (
     <main className="chat-area">
       <div className="chat-container" ref={chatContainerRef}>
-        {messages.length === 0 ? (
+        {!currentChat ? (
+          <div className="welcome-screen">
+            <div className="logo">ChatGPT Clone</div>
+            <p>Start a conversation and explore the possibilities!</p>
+          </div>
+        ) : messages.length === 0 ? (
           <div className="no-messages">No messages yet</div>
         ) : (
           messages.map((message, index) => (
@@ -39,6 +44,7 @@ ChatArea.propTypes = {
     })
   ).isRequired,
   onSendMessage: PropTypes.func.isRequired,
+  currentChat: PropTypes.object,
 };
 
 export default ChatArea;

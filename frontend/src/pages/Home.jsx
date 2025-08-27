@@ -76,7 +76,36 @@ const Home = () => {
   }, []);
 
   const handleSendMessage = async (message) => {
-    if (!message.trim() || !currentChat) return;
+    if (!message.trim()) return;
+
+    let chatId;
+
+    // Create new chat if no chat is selected
+    if (!currentChat) {
+      try {
+        const response = await axios.post(
+          "/api/chat",
+          { title: message.slice(0, 50) }, // Use first 50 chars of message as title
+          { withCredentials: true }
+        );
+
+        const newChat = {
+          _id: response.data.chat._id,
+          title: response.data.chat.title,
+          createdAt: response.data.chat.lastActivity,
+        };
+
+        dispatch(addChat(newChat));
+        dispatch(setCurrentChat(newChat));
+        setIsSidebarOpen(true);
+        chatId = newChat._id;
+      } catch (error) {
+        console.error("Error creating new chat:", error);
+        return;
+      }
+    } else {
+      chatId = currentChat._id;
+    }
 
     // Add user message to chat
     const newMessage = {
@@ -88,7 +117,7 @@ const Home = () => {
     dispatch(addMessage(newMessage));
 
     socket.emit("ai-message", {
-      chat: currentChat._id,
+      chat: chatId,
       content: message,
     });
   };
@@ -135,7 +164,11 @@ const Home = () => {
         onChatSelect={handleChatSelect}
       />
 
-      <ChatArea messages={messages} onSendMessage={handleSendMessage} />
+      <ChatArea
+        messages={messages}
+        onSendMessage={handleSendMessage}
+        currentChat={currentChat}
+      />
     </div>
   );
 };
