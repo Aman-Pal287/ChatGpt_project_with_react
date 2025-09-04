@@ -54,7 +54,9 @@ const Home = () => {
       dispatch(setChats(response.data.chats));
     });
 
-    const tempSocket = io("http://localhost:3000", { withCredentials: true });
+    const tempSocket = io("https://chatgpt-clone-p4mh.onrender.com", {
+      withCredentials: true,
+    });
 
     tempSocket.on("ai-response", (messagePayload) => {
       console.log("received ai response", messagePayload);
