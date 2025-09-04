@@ -9,7 +9,7 @@ const { createMemory, queryMemory } = require("../services/vector.service");
 function initSocketServer(httpServer) {
   const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "https://chatgpt-clone-p4mh.onrender.com",
       allowedHeaders: ["Authorization", "Content-Type"],
       credentials: true,
     },
