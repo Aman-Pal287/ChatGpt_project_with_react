@@ -57,8 +57,8 @@
 .new-chat-btn {
   display: inline-block;
   padding: 8px 12px;
-  background-color: rgba(255, 255, 255, 0.03);
-  color: #48d814;
+  background-color: rgb(27, 92, 223);
+  color: #26b3b3;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 6px;
   cursor: pointer;
